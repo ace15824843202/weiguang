@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 头部开始 -->
+
+{include file="common/header"}
+<!-- 头部结束 -->
+<body class="no-skin">
+	<!-- 导航开始 -->
+	{include file="common/navbar"}
+	<!-- 导航结束 -->
+	<div class="main-container" id="main-container">
+		<!-- 侧边栏开始 -->
+		{include file="common/sidebar"}
+		<!-- 侧边栏结束 -->
+
+
+		<div class="main-content">
+			<div class="main-content-inner">
+				<div class="breadcrumbs" id="breadcrumbs">
+					<ul class="breadcrumb">
+						<li>
+							<i class="ace-icon fa fa-home home-icon"></i>
+							<a href="{:url('index/index')}">首页</a>
+						</li>
+						<li class="active">权限管理</li>
+					</ul>
+				</div>
+				<div class="page-content">
+					<div class="alert alert-block alert-success">
+						<button type="button" class="close" data-dismiss="alert">
+							<i class="ace-icon fa fa-times"></i>
+						</button>
+						欢迎使用微光后台管理系统。
+					</div>
+
+					<!-- 模板设置 -->
+					{include file="common/setting"}
+					<!-- 模板设置借书 -->
+					
+
+
+					<div class="row">
+						<div class="col-xs-12">
+							<form class="form-horizontal" action="{:url('rules/add')}" method="post">
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-10">上级菜单 </label>
+									<div class="col-sm-9">
+										<select class="rcol-xs-10 col-sm-5" name="pid">
+											<option value="0" >顶级菜单</option>
+											{foreach $list as $k=>$v}
+												<option value="{$v['id']}" >{$v['rule_name']}</option>
+											{/foreach}
+										</select>
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle"></span>
+										</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 菜单名称 </label>
+									<div class="col-sm-9">
+										<input type="text" name='rule_name' class="rcol-xs-10 col-sm-5" value="">
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle"></span>
+										</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 链接 </label>
+									<div class="col-sm-9">
+										<input type="text" name='rule_address' placeholder="链接，如：Index/index" class="col-xs-10 col-sm-5" value="">
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle"></span>
+										</span>
+									</div>
+								</div>
+
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-2">ICON图标 </label>
+									<div class="col-sm-9">
+										<input type="text" name='rule_icon' placeholder="ICON图标" class="col-xs-10 col-sm-5" value="">
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle"><a href="http://fontawesome.dashgame.com/" target="_blank">Font Awesome图标库</a></span>
+										</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-2">右侧菜单是否显示 </label>
+									<div class="control-label no-padding-left col-sm-1">
+										<label>
+											<input type="hidden" name="is_menu" value="0" />
+											<input value="1" class="ace ace-switch ace-switch-2" type="checkbox" checked name="is_menu"/>
+											<span class="lbl"></span>
+										</label>
+									</div>
+									<span class="help-inline col-xs-12 col-sm-7">
+										<span class="middle"></span>
+									</span>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 列表中是否显示  </label>
+									<div class="control-label no-padding-left col-sm-1">
+										<label>
+											<input type="hidden" name="status" value="0" />
+											<input value="1" class="ace ace-switch ace-switch-2" type="checkbox" checked name='status' />
+											<span class="lbl"></span>
+										</label>
+									</div>
+									<span class="help-inline col-xs-12 col-sm-7">
+										<span class="middle"></span>
+									</span>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 排序 </label>
+									<div class="col-sm-9">
+										<input type="text" name="sort" id="o" placeholder="" class="col-xs-10 col-sm-5" value="">
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle">越小越靠前</span>
+										</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="col-md-offset-2 col-md-9">
+									<button class="btn btn-info" type="submit"><i class="icon-ok bigger-110"></i>提交</button>
+								</div>
+							</form>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- 底部开始 -->
+		{include file="common/footer"}
+		<!-- 底部结束 -->
+	</div>
+
+	<!-- 相关js -->
+	{include file="common/js"}
+	
+</body>
+</html>
+

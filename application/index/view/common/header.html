@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>微光</title>
+    <!-- css -->
+    <link rel="stylesheet" href="__CSS__/swiper.min.css">
+    <link rel="stylesheet" href="__CSS__/style.css">
+    <!-- js -->
+    <script src="__JS__/jquery-1.10.1.min.js"></script>
+    <script src="__JS__/swiper.min.js"></script>
+    <script src="__JS__/util.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="content">
+            <!-- header -->
+            <div class="header">
+                <div class="head clearfix">
+                    <a href="#" class="logo">
+                        <img src="__IMG__/logo.png" alt="">
+                    </a>
+                    <ul class="clearfix nav">
+                    {foreach $nav as $k=>$v}
+                        <li>
+                            <a href="{:url($v['url'].'/index')}" class="{$v['url']==$controller?'activea':''}">{$v['name']}</a>
+                        </li>
+                    {/foreach}
+                    </ul>
+                </div>
+            </div>

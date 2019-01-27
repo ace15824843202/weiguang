@@ -1,0 +1,55 @@
+{include file='common/header'}
+            <div class="innerbanner">
+                <img src="__IMG__/j4.jpg" alt="">
+                <div class="inner">
+                    <span>心理阅读</span>
+                </div>
+            </div>
+            <div class="innernav">
+                <div class="box">
+                    <ul class="clearfix">
+                    {foreach $mind_nav as $k=>$v}
+                        <li><a href="{:url('index',['id'=>$v['id']])}" class="{$v['id']==$type_id?'activea':''}">{$v['name']}</a></li>
+                    {/foreach}
+                        <li class="more">
+                            <a href="#">更多分类</a>
+                            <div class="secnav">
+                                <div class="arrow"></div>
+                                <div>
+                                {foreach $more_nav as $k=>$v}
+                                    <a href="{:url('index',['id'=>$v['id']])}" class="{$v['id']==$type_id?'activea':''}">{$v['name']}</a>
+                                {/foreach}
+                                </div>
+                            </div>
+                        </li>                              
+                    </ul>
+                </div>
+            </div>
+            <div class="wzlist">
+                <div class="inner">
+                    <ul>
+                    {foreach $article as $k=>$v}
+                        <li class="clearfix">
+                            <img src="{$v['pic']}" alt="">
+                            <div class="words">
+                                <p class="time">{$v['addtime'] | substr=0,10}</p>
+                                <h2 class="tit">{$v['title']}</h2>
+                                <p class="word">{$v['desc']}</p>
+                                <a href="{:url('detail',['article_id'=>$v['id'],'id'=>$v['type_id']])}" class="xq">了解详情</a>
+                            </div>
+                        </li>
+                    {/foreach}
+                    </ul>
+                </div>
+            </div>
+            <div class="page">
+                <div class="inner">
+                    <div class="box clearfix">
+                    <div>
+                        {$article->render()}
+                    </div>
+                        
+                    </div>
+                </div>
+            </div>
+{include file='common/footer'}

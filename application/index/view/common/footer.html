@@ -1,0 +1,84 @@
+           <!-- footer -->
+             <div class="footer">
+                <div class="foot">
+                    <div class="paddingbox">
+                        <div class="clearfix">
+                            <div class="contact">
+                                <h3>联系我们</h3>
+                                <div class="email clearfix">
+                                    <span>邮箱地址</span>
+                                    <strong>skylightconsulting@hotmail.com</strong>
+                                </div>
+                                <div class="zx clearfix">
+                                   <span>微光咨询小<br>秘书微信ID</span>
+                                   <strong>skylighthelper</strong>
+                                </div>
+                                <div class="zh clearfix">
+                                    <span>知乎专栏</span>
+                                    <strong>
+                                        <a href="https://zhuanlan.zhihu.com/skylightconsulting" target="_blank">https://zhuanlan.zhihu.com/skylightconsulting</a>
+                                        <b>Instagram: skylightconsulting</b>
+                                    </strong>
+                                </div>
+                            </div>
+                            <div class="gz">
+                                <h3>关注我们</h3>
+                                <div>
+                                    <img src="__IMG__/j3.jpg" alt="">
+                                    <span>（官方微信）</span>
+                                </div>
+                            </div>
+                            <div class="share">
+                                <h3>分享到</h3>
+                                <div class="bdsharebuttonbox" data-tag="share_1">
+                                    <a class="bds_weixin" data-cmd="weixin" href="#"></a>
+                                    <a class="bds_tsina" data-cmd="tsina" href="#"></a>
+                                </div>
+                                <script> 
+                                    //以下为js加载部分
+                                    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+                                </script>
+                            </div>
+                        </div>
+                        <div class="sm clearfix">
+                            <a href="#2">法律声明</a>
+                            <span>Copyright©2010-2015版权所有  skylight consulting   京ICP12019363号-1</span>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            <!-- gotop -->
+            <div class="gotop"></div>
+        </div>
+    </div>
+    <!-- js -->
+    <script>
+        // banner
+        var mySwiperBanner = new Swiper('.banner .swiper-container', {
+            autoplay: 5000,
+            loop : true,
+            direction : 'vertical',
+            autoHeight: true, 
+            observer:true,
+            observeParents:true,
+            pagination : '.swiper-pagination',
+            paginationClickable :true
+        });
+        // hot
+        var mySwiperHot = new Swiper('.hot .swiper-container', {
+            loop : true,
+            slidesPerView: 'auto',
+            prevButton:'.swiper-button-prev',
+            nextButton:'.swiper-button-next'
+        });
+
+        $(function(){
+             var h = $('#iabout').offset().top;
+            $('.gotwo').click(function(){
+                 $('html,body').animate({"scrollTop":h},300);
+            })
+        })
+    </script>
+</body>
+</html>

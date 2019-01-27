@@ -1,0 +1,52 @@
+<div id="sidebar" class="sidebar responsive">
+			<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+				<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+					<button class="btn btn-success">
+						<i class="ace-icon fa fa-signal"></i>
+					</button>
+					<button class="btn btn-info">
+						<i class="ace-icon fa fa-pencil"></i>
+					</button>
+					<button class="btn btn-warning">
+						<i class="ace-icon fa fa-users"></i>
+					</button>
+					<button class="btn btn-danger">
+						<i class="ace-icon fa fa-cogs"></i>
+					</button>
+				</div>
+				<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+					<span class="btn btn-success"></span>
+					<span class="btn btn-info"></span>
+					<span class="btn btn-warning"></span>
+					<span class="btn btn-danger"></span>
+				</div>
+			</div>
+			<ul class="nav nav-list">
+				{foreach $menu as $k=>$v}
+				<li>
+					<a href="#" class="dropdown-toggle">
+						<i class="menu-icon fa fa-{$v['rule_icon']}"></i>
+						<span class="menu-text">{$v['rule_name']}</span>
+						<b class="arrow fa fa-angle-down"></b>
+					</a>
+					<b class="arrow"></b>
+					<ul class="submenu">
+						{foreach $v['child'] as $kk=>$vv}
+						<li>
+							<a href="{:url($vv['rule_address'])}"><i class="menu-icon fa fa-caret-right"></i>{$vv['rule_name']}</a>
+							<b class="arrow"></b>
+						</li>
+						{/foreach}
+						
+					</ul>              
+				</li>
+				{/foreach}
+			
+			</ul>
+			<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+				<i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left"
+				data-icon2="ace-icon fa fa-angle-double-right"></i>
+			</div>
+
+
+		</div>

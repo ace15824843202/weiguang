@@ -1,0 +1,82 @@
+{include file='common/header'}
+            <!-- banner -->
+            <div class="banner">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                    {foreach $banner as $k=>$v}
+                        <div class="swiper-slide">
+                                <a href="#">
+                                    <img src='{$v['pic']}' alt="">
+                                    <div class="inner">
+                                        <div class="bannerpage clearfix">
+                                            <span class="cur_page">
+                                                {$k>8?($k+1):'0'.($k+1)}
+                                            </span class="cur_page">
+                                            <span class="line"></span>
+                                            <span class="all_page">{$count}</span>
+                                        </div>
+                                        <div class="banner_word">
+                                            <h2>{$v['content_top']}</h2>
+                                            <h3>{$v['content_bot']}</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                        </div>
+                     {/foreach}   
+                        
+                    </div>
+                    <!-- 分页 -->
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="gotwo"></div>
+            </div>
+            <!-- about -->
+            <div class="about clearfix" id="iabout">
+                <div class="bg"></div>
+                <div class="inner clearfix">
+                    <div class="left imgbox">
+                        <img src="__IMG__/p1.png" alt="" class="img1">
+                        <img src="{$bg['pic']}" alt="" class="img2">
+                    </div>
+                    <div class="left wordbox">
+                        <h2>{$bg['content1']}</h2>
+                        <h4>{$bg['content2']}</h4>
+                        <p>{$bg['content3']}</p>
+                        <p>{$bg['content4']}</p>
+                        <h5><a href="about.html" target="_blank">了解详情</a></h5>
+                    </div>
+                </div>
+            </div>
+            <!-- hot -->
+            <div class="hot clearfix">
+                <div class="title">
+                    <div class="clearfix">
+                        <span>最新热文</span>
+                        <a href="#">查看更多</a>
+                    </div>
+                </div>
+                <div class="inner">
+                    <div class="box">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                             {foreach $article as $k=>$v}
+                                <div class="swiper-slide clearfix">
+                                    <div class="left imgbox">
+                                        <img src="{$v['pic']}" alt="">
+                                    </div>
+                                    <div class="left worbox">
+                                        <p class="time">{$v['addtime'] | substr=1,10}</p>
+                                        <h2 class="tit">{$v['title']}</h2>
+                                        <p class="words">{$v['desc']}</p>
+                                        <a href="{:url('index/article/detail',['article_id'=>$v['id'],'id'=>$v['type_id']])}" class="xq">了解详情</a>
+                                    </div>
+                                </div>
+                            {/foreach}
+                            </div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{include file='common/footer'}

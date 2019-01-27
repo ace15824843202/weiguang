@@ -1,0 +1,74 @@
+{include file='common/header'}
+            <div class="innerbanner">
+                <img src="__IMG__/j4.jpg" alt="">
+                <div class="inner">
+                    <span>心理阅读</span>
+                </div>
+            </div>
+            <div class="innernav">
+                <div class="box">
+                    <ul class="clearfix">
+                    {foreach $mind_nav as $k=>$v}
+                        <li><a href="{:url('index',['id'=>$v['id']])}" class="{$v['id']==$type_id?'activea':''}">{$v['name']}</a></li>
+                    {/foreach}
+                        <li class="more">
+                            <a href="#">更多分类</a>
+                            <div class="secnav">
+                                <div class="arrow"></div>
+                                <div>
+                                {foreach $more_nav as $k=>$v}
+                                    <a href="{:url('index',['id'=>$v['id']])}" class="{$v['id']==$type_id?'activea':''}">{$v['name']}</a>
+                                {/foreach}
+                                </div>
+                            </div>
+                        </li>                              
+                    </ul>
+                </div>
+            </div>
+            <div class="readxq">
+                <div class="inner">
+                    <div class="tabtit tabtit1">
+                        <a href="#">首页</a><b>></b><a href="#">心理阅读</a><b>></b><span>心理阅读详情页</span>
+                    </div>
+                    <div class="bigtit">
+                        <h1>{$detail['title']}</h1>
+                        <p class="time">{$detail['addtime'] | substr=0,10}</p>
+                        <div class="sharebox clearfix">
+                            <span class="name">分享：</span>
+                            <div class="share">
+                                <div class="bdsharebuttonbox" data-tag="share_1">
+                                    <a class="bds_weixin" data-cmd="weixin" href="#"></a>
+                                    <a class="bds_tsina" data-cmd="tsina" href="#"></a>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                    <div class="wzcont">
+                        <div class="tips clearfix">
+                            <span>作者：{$detail['author']}</span>
+                            <span>编辑：{$detail['editor']}</span>
+                            <span>阅读：5分钟</span>
+                        </div>
+                        <div class="wz">
+                            {$detail['content']}
+                        </div>
+                    </div>
+                    <div class="nextwz">
+                        <div>
+                            {if ($pre['flag']==1)}
+                                <a href="{:url('detail',['article_id'=>$pre['id'],'id'=>$detail['type_id']])}">上一篇：{$pre['title']}</a>
+                            {else /}
+                                <a href="javascript:viod(0)">上一篇：没有上一篇文章</a>
+                            {/if}
+
+                            {if ($next['flag']==1)}
+                                <a href="{:url('detail',['article_id'=>$next['id'],'id'=>$detail['type_id']])}">下一篇：{$next['title']}</a>
+                            {else /}
+                                <a href="javascript:viod(0)">下一篇：没有下一篇文章</a>
+                            {/if}
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+{include file='common/footer'}
