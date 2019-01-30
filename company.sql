@@ -10,28 +10,30 @@ Target Server Type    : MYSQL
 Target Server Version : 50711
 File Encoding         : 65001
 
-Date: 2019-01-27 22:08:33
+Date: 2019-01-30 14:15:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for about_us
+-- Table structure for about
 -- ----------------------------
-DROP TABLE IF EXISTS `about_us`;
-CREATE TABLE `about_us` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+DROP TABLE IF EXISTS `about`;
+CREATE TABLE `about` (
+  `id` int(11) unsigned zerofill NOT NULL AUTO_INCREMENT COMMENT '编号',
   `email` varchar(30) DEFAULT NULL COMMENT '邮箱',
   `wechat` varchar(30) DEFAULT NULL COMMENT '邮箱',
+  `zhihu` varchar(255) DEFAULT NULL,
   `instagram` varchar(30) DEFAULT NULL COMMENT '微信',
   `content` longtext COMMENT '详情',
   `status` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '状态 0 禁用 1 正常',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of about_us
+-- Records of about
 -- ----------------------------
+INSERT INTO `about` VALUES ('00000000001', 'skylightconsulting@hotmail.com', 'skylighthelper', 'https://zhuanlan.zhihu.com/skylightconsulting', 'skylightconsulting', '<p>我们是一群来自纽约大学和哥伦比亚大学社工专业毕业的心理咨询师。创建微光咨询，为留学生提供心理知识普及以及计划中的专业心理咨询服务。<br>服务领域：<br>情绪管理，焦虑，抑郁， 创伤<br>亲密关系，行为管理，亲子关系，人际关系，家庭关系<br>跨文化冲突，留学适应，个人成长<br>性别认同，性心理，LGBTQ性少数人群关于性别取向/性别认同探索 <img src=\"/uploads/2019-01-30/201901300116484866.jpg\" style=\"max-width: 100%;\"><img src=\"/uploads/2019-01-30/201901300116534371.jpg\" style=\"max-width: 100%;\"><img src=\"/uploads/2019-01-30/201901300116597065.jpg\" style=\"max-width: 100%;\"><img src=\"/uploads/2019-01-30/201901300117066958.jpg\" style=\"max-width: 100%;\"> </p>', '1');
 
 -- ----------------------------
 -- Table structure for article_detail
@@ -138,11 +140,13 @@ CREATE TABLE `bigshot` (
   `field` varchar(255) DEFAULT NULL COMMENT '工作领域',
   `area` varchar(255) DEFAULT NULL COMMENT '工作区域',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of bigshot
 -- ----------------------------
+INSERT INTO `bigshot` VALUES ('1', '付聪', '6', '纽约大学（NYU）临床社会工作硕士、美国纽约州执照社工LMSW （097932）,2017/9-2018/5 怀特精神分析学与心理学学院,2018/4-2019/11 性心理学和性教育', '人生是美好，奇妙却又短暂的。经历黑暗岁月，跌倒，爬起来，穿过黑暗，走向光明。我们用一生的时间来认识，了解和学习自己, 倾听我们内心深处的声音。这条路上希望我能陪伴你一同探索，倾听，协助你成为自己想要成为的样子!', '生命过渡期: 青少年到成人的过渡， 环境改变(移民，搬家，升学)， 家人,朋友的去世，以及分离LGBTQ 性少数人群关于性取向/性别认同探索', '寻找内心的声音，深度自我探索，理解认知自己的情绪和潜意识', '<p><br></p><p microsoft=\"\" yahei\",=\"\" simsun;=\"\" font-size:=\"\" 16px;\"=\"\">心理咨询是一个不断认识自我，寻找自我并且与自己和解的过程，心理咨询不是一蹴而就的，而是一个漫长的不断发现自我，完善自我的旅程。希望我能够在这个旅程中陪伴您，帮助您披襟斩棘走出一条属于自己的路。</p><p microsoft=\"\" yahei\",=\"\" simsun;=\"\" font-size:=\"\" 16px;\"=\"\">当您认知，感知，接受自己的那一刻，改变已经悄然发生！</p><p microsoft=\"\" yahei\",=\"\" simsun;=\"\" font-size:=\"\" 16px;\"=\"\">1.初始访谈:</p><p microsoft=\"\" yahei\",=\"\" simsun;=\"\" font-size:=\"\" 16px;\"=\"\">我会想了解来访的主要原因，有些人希望成为更好的自己，有些人希望可以改善情绪状况，有些人希望有一个抒发的管道，有些人面临人际间的问题，甚至，有些人也不知道为什么但觉得需要一些心理的帮助。 在初识访谈这个过程中，我会和您一起去探索，分析，讨论我们咨询的目标和方向。</p><p microsoft=\"\" yahei\",=\"\" simsun;=\"\" font-size:=\"\" 16px;\"=\"\">2. 咨询过程：</p><p microsoft=\"\" yahei\",=\"\" simsun;=\"\" font-size:=\"\" 16px;\"=\"\">每个人都有自己应对这个世界的模式，它带着我们独特的个人历史和经历，其中包含早期与父母或照顾者的互动体验，以及某些关键事件在我们生命中留下的印记。这个模式里可有很多潜藏的能量和情绪，可能给你当下的生活带来影响或困扰。我们的行为模式是从最初的生命体验中来，也只有在新的体验中才会真正改变。</p><p microsoft=\"\" yahei\",=\"\" simsun;=\"\" font-size:=\"\" 16px;\"=\"\">在咨询中，我会为你提供一个放松，私密，安全的咨询环境，认真的倾听，试图去理解你的困惑，感受，想法、以及行为背后的深层意义，并给你支持。同时我也会很重视我们之间的互动和体验，观察我们互动方式与情绪反应模式。 我会与你一起去觉察，体验，并且去思考这过程， 一起去理解你核心的情绪/人际模式 和行为模式，去觉察和处理一些从未被看到情绪和诉求，一起去修复成长过程中受过的创伤，尝试理体验新的应对方式。</p><p microsoft=\"\" yahei\",=\"\" simsun;=\"\" font-size:=\"\" 16px;\"=\"\">这个过程需要我们共同的努力，也需要不断摸索，会经历起起伏伏。这是一次旅程，我们一起启程。</p><p microsoft=\"\" yahei\",=\"\" simsun;=\"\" font-size:=\"\" 16px;\"=\"\">3.结束：</p><p microsoft=\"\" yahei\",=\"\" simsun;=\"\" font-size:=\"\" 16px;\"=\"\">你可以更好的认识自己的情感和想法，了解自己，接纳自己，聆听内心的声音，作出更自由的选择，走属于自己的路。拥有健康的亲密关系，可以更好的去爱，去生活。</p><p><br></p>', ' 中英双语', '根据具体问题和来访需要，频率可以灵活安排，新个案建议至少一周或两周一次，中长程个案到后期可以减少见面频率或按需问诊。', '600元 （45分钟）', '/static/images/J11.jpg', '1,6,7,8', '2');
+INSERT INTO `bigshot` VALUES ('2', '范琳琳', '5', '纽约大学临床社工专业，Phi Alpha Honor Society成员；北京师范大学应用心理以及传播学双学位。曾在纽约西奈山医院临床心理诊所实习，现在纽约大学附属的临床心理诊所工作。拥有纽约及新泽西LCSW执照。截至2018年9月，提供心理咨询超过2700小时，曾接受儿童青少年方向精神分析培训并获得证书，拥有TF-CBT认证以及完成EMDR训练。', '', '', '', '    <p><br></p>', ' 中英双语', '根据具体问题和来访需要，频率可以灵活安排，新个案建议至少一周或两周一次，中长程个案到后期可以减少见面频率或按需问诊。', '600元 （45分钟）', '/uploads/2019-01-28/201901281003124599.jpg', '5,6,7,8', '1');
 
 -- ----------------------------
 -- Table structure for top_type
@@ -244,7 +248,7 @@ INSERT INTO `tp_rules` VALUES ('94', '0', '员工管理', 'user/index', 'users',
 INSERT INTO `tp_rules` VALUES ('108', '86', '内容添加', 'bigshot/add', '', '1', '2', '1');
 INSERT INTO `tp_rules` VALUES ('90', '86', '大咖展示', 'bigshot/index', '', '1', '1', '1');
 INSERT INTO `tp_rules` VALUES ('91', '84', '内容删除', 'about/delete', '', '0', '1', '1');
-INSERT INTO `tp_rules` VALUES ('92', '84', '内容添加', 'about/add', '', '0', '0', '1');
+INSERT INTO `tp_rules` VALUES ('92', '84', '内容添加', 'about/add', '', '1', '0', '1');
 INSERT INTO `tp_rules` VALUES ('93', '84', '内容修改', 'about/edit', '', '0', '0', '1');
 INSERT INTO `tp_rules` VALUES ('95', '94', '员工列表', 'user/index', '', '1', '1', '1');
 INSERT INTO `tp_rules` VALUES ('96', '94', '员工删除', 'user/delete', '', '0', '2', '1');
@@ -303,14 +307,15 @@ CREATE TABLE `work_area` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `area` varchar(50) DEFAULT NULL COMMENT '工作区域',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of work_area
 -- ----------------------------
-INSERT INTO `work_area` VALUES ('1', '旧金山1');
+INSERT INTO `work_area` VALUES ('1', '旧金山');
 INSERT INTO `work_area` VALUES ('2', '纽约');
-INSERT INTO `work_area` VALUES ('6', '澳大利亚');
+INSERT INTO `work_area` VALUES ('3', '澳大利亚');
+INSERT INTO `work_area` VALUES ('7', '北京');
 
 -- ----------------------------
 -- Table structure for work_field
@@ -320,7 +325,7 @@ CREATE TABLE `work_field` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `field` varchar(50) DEFAULT NULL COMMENT '工作领域',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of work_field
@@ -328,3 +333,7 @@ CREATE TABLE `work_field` (
 INSERT INTO `work_field` VALUES ('1', '留学生咨询');
 INSERT INTO `work_field` VALUES ('2', '成人咨询');
 INSERT INTO `work_field` VALUES ('3', '儿童咨询');
+INSERT INTO `work_field` VALUES ('5', '行为问题');
+INSERT INTO `work_field` VALUES ('6', '亲密关系');
+INSERT INTO `work_field` VALUES ('7', '情绪压力');
+INSERT INTO `work_field` VALUES ('8', '个人成长');
