@@ -1,0 +1,152 @@
+ {include file="common/header" /}
+            <div class="innerbanner">
+                <img src="__IMG__/j10.jpg" alt="">
+                <div class="inner">
+                    <span>咨询大咖</span>
+                </div>
+            </div>
+            <div class="search">
+                <div class="inner">
+                    <div class="box">
+                        <form action="/index/bigshot"  class="clearfix" method="post">
+                            <div class="left clearfix">
+                                <label>擅长领域</label>
+                                <select name="field">
+                                        <option value="0">请选择</option>
+                                   {foreach $field as $v}
+                                        {if $fields==$v['id']}
+                                             <option value="{$v['id']}"  selected>{$v['field']}</option>
+                                        {else /}
+                                             <option value="{$v['id']}"  >{$v['field']}</option>
+                                        {/if}
+                                         
+                                   {/foreach}
+                                </select>
+                            </div>
+                            <div class="left clearfix">
+                                <label>所在区域</label>
+                                <select name="area">
+                                    <option value="0">请选择</option>
+                                    {foreach $area as $v}
+                                       
+                                        {if $areas ==$v['id']}
+                                            <option value="{$v['id']}" selected >{$v['area']}</option>
+                                        {else /}
+                                             
+                                              <option value="{$v['id']}" >{$v['area']}</option>
+                                        {/if}
+                                         
+                                   {/foreach}
+                                  
+                                </select>
+                            </div>
+                            <div class="left clearfix">
+                                <label>从业年限</label>
+                                <select name="age">
+                                    <option value="0">请选择</option>
+                                   {for  start="1" end="30" name="i"}
+                                        {if $ages==$i}
+                                             <option value="{$i}"  selected>{$i}年</option>
+                                        {else /}
+                                             <option value="{$i}" >{$i}年</option>
+                                        {/if}
+                                        
+
+                                    
+                                   {/for}
+                                </select>
+                            </div>
+                            <div class="left clearfix">
+                                {if $keywords ==""}
+                                 <input type="text" name="keyword" value="" placeholder="请输入搜索关键词">
+                                {else /}
+                                 <input type="text" name="keyword" value="{$keywords}" >
+                                   
+                                {/if}
+                            </div>
+                            <!-- <span class="tj right">搜索</span> -->
+                            <button  type="submit" class="tj right">搜索</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="poplelist">
+                <div class="inner">
+                    <ul>
+                      
+
+                        {foreach $ceshi as $vv}
+                        <li class="clearfix">
+                            <img class="left" src="{$vv['pic']}" alt="">
+                            <div class="left listR">
+                                <h3>{$vv['name']}</h3>
+                                <div class="clearfix">
+                                    <span class="left">擅长领域：</span>
+
+                                    {php}
+
+                                        $arr = explode(",",$vv['field']);
+
+                                      
+                                       for($i=0;$i < count($arr);$i++){
+                                            for($j=0;$j< count($field);$j++){
+                                                if($field[$j]['id']==$arr[$i]){
+                                                  
+                                                    echo "<em class='left'>".$field[$j]['field']."</em>";
+                                            }
+
+                                        }
+                                      
+                                          
+                                       }
+
+    
+
+                                    {/php}
+
+                                        
+                                   
+                                </div>
+                                <div class="clearfix">
+                                    <span class="left">从业年限：</span>
+                                    <strong class="left">{$vv['expire']}年</strong>
+                                </div>
+                                <div class="clearfix">
+                                    <span class="left">个人资质：</span>
+                                    <p class="left">
+                                        {php}
+
+                                        $arr = explode(",",$vv['zizhi']);
+                                       for($i=0;$i < count($arr);$i++){
+
+                                       echo $arr[$i]."<br/>";
+                                          
+                                       }
+
+
+
+                                    {/php}
+                                    </p>
+                                </div>
+                                <a href="/index/bigshot/detail/id/{$vv['id']}"><strong>了解详情</strong></a>
+                            </div>
+                        </li>
+
+
+                     {/foreach}
+
+
+
+                    </ul>
+                </div>
+            </div>
+            <div class="page">
+                <div class="inner">
+                    <div class="box clearfix">
+                        {$page}
+                       
+                          
+                    </div>
+                </div>
+            </div>
+{include file="common/footer" /}        

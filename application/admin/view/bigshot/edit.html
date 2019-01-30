@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 头部开始 -->
+
+{include file="common/header"}
+<!-- 头部结束 -->
+<body class="no-skin">
+	<!-- 导航开始 -->
+	{include file="common/navbar"}
+	<!-- 导航结束 -->
+	<div class="main-container" id="main-container">
+		<!-- 侧边栏开始 -->
+		{include file="common/sidebar"}
+		<!-- 侧边栏结束 -->
+
+
+		<div class="main-content">
+			<div class="main-content-inner">
+				<div class="breadcrumbs" id="breadcrumbs">
+					<ul class="breadcrumb">
+						<li>
+							<i class="ace-icon fa fa-home home-icon"></i>
+							<a href="{:url('index/index')}">首页</a>
+						</li>
+						<li class="active">大咖管理</li>
+					</ul>
+				</div>
+				<div class="page-content">
+					<div class="alert alert-block alert-success">
+						<button type="button" class="close" data-dismiss="alert">
+							<i class="ace-icon fa fa-times"></i>
+						</button>
+						欢迎使用微光后台管理系统。
+					</div>
+
+					<!-- 模板设置 -->
+					{include file="common/setting"}
+					<!-- 模板设置借书 -->
+					
+
+
+					<div class="row">
+						<div class="col-xs-12">
+							<form class="form-horizontal" action="{:url('bigshot/edit')}" method="post" enctype="multipart/form-data">
+
+								<input type="hidden" required name="id" class="rcol-xs-10 col-sm-5" value="{$info['id']}">
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 姓名:</label>
+									<div class="col-sm-9">
+										<input type="text" name="name" class="rcol-xs-10 col-sm-5" value="{$info['name']}">
+										<span class="help-inline col-xs-12 col-sm-7"></span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1">领域选择:</label>
+									<div class="col-sm-9">
+										<div class="col-sm-10">
+											<div class="row">
+												<div class="widget-box">
+													<div class="widget-header">
+														<h4 class="widget-title">
+															<label>
+																<input name="" class="ace ace-checkbox-2 father" type="checkbox" value="" {$status=="true"?"checked":""}/>
+																<span class="lbl"> 擅长领域</span>
+															</label>
+														</h4>
+														<div class="widget-toolbar">
+															<a href="#" data-action="collapse">
+																<i class="ace-icon fa fa-chevron-up"></i>
+															</a>
+														</div>
+													</div>
+													<div class="widget-body">
+														<div class="widget-main row">
+															{foreach $allrule as $key=>$val}
+																<label class="col-xs-2" style="width:200px;">
+																	<input name="field[]" class="ace ace-checkbox-2 children"  type="checkbox" value="{$val['id']}"  {$val['checked']=="true"?"checked":""}  />
+																	<span class="lbl"> {$val['field']}</span>
+																</label>
+															{/foreach}
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-10"> 从业年限:</label>
+									<div class="col-sm-9">
+										<select class="rcol-xs-10 col-sm-5" name="expire">
+										{for start="0" end="30" step="1" name="i"}
+											{if $i==$info['expire']}
+													<option value="{$i}" selected>{$i}年</option>
+												{else /}
+													<option value="{$i}">{$i}年</option>
+												{/if}
+										{/for}
+										</select>
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle"></span>
+										</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-10"> 所属区域:</label>
+									<div class="col-sm-9">
+										<select class="rcol-xs-10 col-sm-5" name="area">
+										{foreach $area as $v}
+												{if $v['id']==$info['area']}
+													<option value="{$v['id']}"  selected>{$v['area']}</option>
+												{else /}
+													<option value="{$v['id']}" >{$v['area']}</option>
+												{/if}	
+										{/foreach}
+										</select>
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle"></span>
+										</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 资质：</label>
+									<div class="col-sm-9">
+										<textarea class="rcol-xs-10 col-sm-5" rows="2" name='zizhi'>{$info['zizhi']}</textarea>
+										<span class="help-inline col-xs-12 col-sm-7">多个资质用逗号隔开</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 个人描述: </label>
+									<div class="col-sm-9">
+										<textarea class="rcol-xs-10 col-sm-5" rows="2" name='desc'>{$info['desc']}</textarea>
+										<span class="help-inline col-xs-12 col-sm-7">如不需要,留空即可</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 擅长方向:</label>
+									<div class="col-sm-9">
+										<textarea class="rcol-xs-10 col-sm-5" rows="2" name='goodat'>{$info['goodat']}</textarea>
+										<span class="help-inline col-xs-12 col-sm-7">如不需要,留空即可</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 个人成长: </label>
+									<div class="col-sm-9">
+										<textarea class="rcol-xs-10 col-sm-5" rows="2" name='group'>{$info['group']}</textarea>
+										<span class="help-inline col-xs-12 col-sm-7">如不需要,留空即可</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 工作语言:</label>
+									<div class="col-sm-9">
+										<input type="text" name="language" class="rcol-xs-10 col-sm-5" value="{$info['language']}">
+										<span class="help-inline col-xs-12 col-sm-7">如不需要,留空即可</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 咨询费用:</label>
+									<div class="col-sm-9">
+										<input type="text" name="cost" class="rcol-xs-10 col-sm-5" value="{$info['cost']}">
+										<span class="help-inline col-xs-12 col-sm-7">如不需要,留空即可</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 咨询频率: </label>
+									<div class="col-sm-9">
+										<textarea class="rcol-xs-10 col-sm-5" rows="2" name='ctat'>{$info['ctat']}</textarea>
+										<span class="help-inline col-xs-12 col-sm-7">如不需要,留空即可</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1">照片及工作流程:</label>
+									<div class="col-sm-9">
+										
+										<div id="editor">
+											<img src="{$info['pic']}" alt="">
+											{$info['workflow']}
+										</div>
+
+										
+										<input id="text1" type="hidden" required name="content" value='<img src="{$info['pic']}" alt=""> {$info['workflow']}'>
+										
+										<span class="help-inline col-xs-12 col-sm-7">没有头像,或使用默认！</span>
+									</div>
+								</div>
+								
+								
+								<div class="space-4"></div>
+								<div class="col-md-offset-2 col-md-9">
+									<button class="btn btn-info" type="submit"><i class="icon-ok bigger-110"></i>提交</button>&nbsp; &nbsp; &nbsp;
+									<button class="btn" type="reset"><i class="icon-undo bigger-110"></i>重置</button>
+								</div>
+							</form>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- 底部开始 -->
+		{include file="common/footer"}
+		<!-- 底部结束 -->
+	</div>
+
+	<!-- 相关js -->
+	{include file="common/js"}
+	
+</body>
+</html>
+<script type="text/javascript">
+									var E = window.wangEditor
+									var editor = new E('#editor')
+									var $text1 = $('#text1')
+									
+
+									
+									editor.customConfig.uploadImgServer = "{:url('banner/upload')}" 
+									 
+									  // 隐藏“网络图片”tab
+    								editor.customConfig.showLinkImg = false
+									
+									//debug模式开启    
+						            editor.customConfig.debug = true
+
+
+						            // 将图片大小限制为 5M
+						            editor.customConfig.uploadImgMaxSize = 5 * 1024 * 1024
+
+						            // 限制一次最多上传 1 张图片
+						            editor.customConfig.uploadImgMaxLength = 5
+
+						            //// 关闭粘贴内容中的样式
+									editor.customConfig.pasteFilterStyle = false
+									// 忽略粘贴内容中的图片
+									editor.customConfig.pasteIgnoreImg = true
+
+									editor.customConfig.onchange = function (html) {
+								            // 监控变化，同步更新到 textarea
+								            $text1.val(html)
+								        }
+
+						           editor.customConfig.uploadFileName = 'myfiles[]'
+
+						            //onchange  
+						            editor.customConfig.onchange = function (html) {
+						                // html 即变化之后的内容
+						                console.log(html)
+						                $text1.val(editor.txt.html())
+						                //获取字数 -- 不知道为什么 前后空格不能清除 
+						                var edi_art_text=editor.txt.text();
+						                edi_art_text=edi_art_text.replace(/\s/g,'');
+						                edi_art_text=$.trim(edi_art_text);
+						                var edi_count=edi_art_text.length;
+						                $('#edi_count').text(edi_count);
+						                
+						            }
+							            //自定义上传图片事件
+										editor.customConfig.uploadImgHooks = {
+											before: function(xhr, editor, files) {
+
+											},
+											success: function(xhr, editor, result) {
+												// console.log(result)
+												// 初始化 textarea 的值
+											
+											layer.alert("上传成功",{icon:1});
+											},
+											fail: function(xhr, editor, result) {
+												layer.alert("上传失败:"+result,{icon:2});
+											},
+											error: function(xhr, editor) {
+												layer.alert("上传出错",{icon:2});
+											},
+											timeout: function(xhr, editor) {
+												layer.alert("上传错误:超时",{icon:0});
+											}
+										}
+									editor.customConfig.uploadImgTimeout = 5000
+
+									
+			            			editor.create()
+
+			            			
+
+
+
+								
+
+								</script>
+<script type="text/javascript">
+
+	// 当父级全选中，子集也全选中
+	$('.father').click(function(){
+		$(this).parents('.widget-box').find('.widget-body .children').prop("checked",$(this).prop("checked"))
+	})
+	// 当子集勾选的数大于0，父级选中，等于0时父级取消选中
+	$('.children').click(function(){
+		var len=$(this).parents('.widget-main').find('.children:checked').length;
+		if(len>0){
+
+			$(this).parents(".widget-box").find(".widget-header .father").prop("checked",true);
+
+
+		}else{
+
+
+		$(this).parents(".widget-box").find(".widget-header .father").prop("checked",false);
+
+
+
+
+		}
+	})
+
+	
+</script>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 头部开始 -->
+
+{include file="common/header"}
+<!-- 头部结束 -->
+<body class="no-skin">
+	<!-- 导航开始 -->
+	{include file="common/navbar"}
+	<!-- 导航结束 -->
+	<div class="main-container" id="main-container">
+		<!-- 侧边栏开始 -->
+		{include file="common/sidebar"}
+		<!-- 侧边栏结束 -->
+
+
+		<div class="main-content">
+			<div class="main-content-inner">
+				<div class="breadcrumbs" id="breadcrumbs">
+					<ul class="breadcrumb">
+						<li>
+							<i class="ace-icon fa fa-home home-icon"></i>
+							<a href="{:url('index/index')}">首页</a>
+						</li>
+						<li class="active">大咖管理</li>
+					</ul>
+				</div>
+				<div class="page-content">
+					<div class="alert alert-block alert-success">
+						<button type="button" class="close" data-dismiss="alert">
+							<i class="ace-icon fa fa-times"></i>
+						</button>
+						欢迎使用微光后台管理系统。
+					</div>
+
+					<!-- 模板设置 -->
+					{include file="common/setting"}
+					<!-- 模板设置借书 -->
+					
+
+
+					<div class="row">
+						<div class="col-xs-12">
+							<form class="form-horizontal" action="{:url('bigshot/add')}" method="post" enctype="multipart/form-data">
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 姓名:</label>
+									<div class="col-sm-9">
+										<input type="text" name="name" class="rcol-xs-10 col-sm-5" value="">
+										<span class="help-inline col-xs-12 col-sm-7"></span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1">领域选择:</label>
+									<div class="col-sm-9">
+										<div class="col-sm-10">
+											<div class="row">
+												<div class="widget-box">
+													<div class="widget-header">
+														<h4 class="widget-title">
+															<label>
+																<input name="" class="ace ace-checkbox-2 father" type="checkbox" value="2"/>
+																<span class="lbl"> 擅长领域</span>
+															</label>
+														</h4>
+														<div class="widget-toolbar">
+															<a href="#" data-action="collapse">
+																<i class="ace-icon fa fa-chevron-up"></i>
+															</a>
+														</div>
+													</div>
+													<div class="widget-body">
+														<div class="widget-main row">
+															{foreach $field_list as $k=>$v}
+															<label class="col-xs-2" style="width:160px;">
+																<input name="field[]" class="ace ace-checkbox-2 children" type="checkbox" value="{$v['id']}"/>
+																<span class="lbl">{$v['field']}</span>
+															</label>
+															{/foreach}
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-10"> 从业年限:</label>
+									<div class="col-sm-9">
+										<select class="rcol-xs-10 col-sm-5" name="expire">
+										{for start="0" end="30" step="1" name="i"}
+											
+											<option value="{$i}" {$i==5?'selected':''}>{$i}年</option>
+											
+										{/for}
+										</select>
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle"></span>
+										</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-10"> 所属区域:</label>
+									<div class="col-sm-9">
+										<select class="rcol-xs-10 col-sm-5" name="area">
+										{foreach $area_list as $k=>$v}
+											<option value="{$v['id']}">{$v['area']}</option>
+										{/foreach}
+										</select>
+										<span class="help-inline col-xs-12 col-sm-7">
+											<span class="middle"></span>
+										</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 资质：</label>
+									<div class="col-sm-9">
+										<textarea class="rcol-xs-10 col-sm-5" rows="2" name='zizhi'>
+											
+										</textarea>
+										<span class="help-inline col-xs-12 col-sm-7">多个资质用逗号隔开</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 个人描述: </label>
+									<div class="col-sm-9">
+										<textarea class="rcol-xs-10 col-sm-5" rows="2" name='desc'>
+											
+										</textarea>
+										<span class="help-inline col-xs-12 col-sm-7">如不需要,留空即可</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 擅长方向:</label>
+									<div class="col-sm-9">
+										<textarea class="rcol-xs-10 col-sm-5" rows="2" name='goodat'>
+											
+										</textarea>
+										<span class="help-inline col-xs-12 col-sm-7">如不需要,留空即可</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 个人成长: </label>
+									<div class="col-sm-9">
+										<textarea class="rcol-xs-10 col-sm-5" rows="2" name='group'>
+											
+										</textarea>
+										<span class="help-inline col-xs-12 col-sm-7">如不需要,留空即可</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 工作语言:</label>
+									<div class="col-sm-9">
+										<input type="text" name="language" class="rcol-xs-10 col-sm-5" value="">
+										<span class="help-inline col-xs-12 col-sm-7">如不需要,留空即可</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 咨询费用:</label>
+									<div class="col-sm-9">
+										<input type="text" name="cost" class="rcol-xs-10 col-sm-5" value="">
+										<span class="help-inline col-xs-12 col-sm-7">如不需要,留空即可</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 咨询频率: </label>
+									<div class="col-sm-9">
+										<textarea class="rcol-xs-10 col-sm-5" rows="2" name='ctat'>
+											
+										</textarea>
+										<span class="help-inline col-xs-12 col-sm-7">如不需要,留空即可</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1">照片及工作流程:</label>
+									<div class="col-sm-9">
+										
+										<div id="editor">
+											
+										</div>
+
+										
+										<input id="text1" type="hidden" required name="content">
+										
+										<span class="help-inline col-xs-12 col-sm-7">没有头像,或使用默认！</span>
+									</div>
+								</div>
+								
+								
+								<div class="space-4"></div>
+								<div class="col-md-offset-2 col-md-9">
+									<button class="btn btn-info" type="submit"><i class="icon-ok bigger-110"></i>提交</button>&nbsp; &nbsp; &nbsp;
+									<button class="btn" type="reset"><i class="icon-undo bigger-110"></i>重置</button>
+								</div>
+							</form>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- 底部开始 -->
+		{include file="common/footer"}
+		<!-- 底部结束 -->
+	</div>
+
+	<!-- 相关js -->
+	{include file="common/js"}
+	
+</body>
+</html>
+<script type="text/javascript">
+	var E = window.wangEditor
+        var editor = new E('#editor')
+        // 或者 var editor = new E( document.getElementById('editor') )
+      	var $text1 = $('#text1')
+        
+        //开启调试模式  默认是关闭的
+        editor.customConfig.debug = true;
+        
+        // 隐藏“网络图片”tab
+    	editor.customConfig.showLinkImg = false;
+
+    	// 配置服务器端地址
+    	editor.customConfig.uploadImgServer = "{:url('bigshot/upload')}";
+        
+
+        // 将图片大小限制为 3M
+		editor.customConfig.uploadImgMaxSize = 3 * 1024 * 1024;
+       
+       	// 限制一次最多上传 1 张图片
+		editor.customConfig.uploadImgMaxLength = 1;
+
+		//自定义文件名
+		editor.customConfig.uploadFileName = 'myfiles[]';
+		// 将 timeout 时间改为 3s
+		editor.customConfig.uploadImgTimeout = 3000;
+
+		editor.customConfig.onchange = function (html) {
+            // 监控变化，同步更新到 textarea
+            $text1.val(html)
+        }
+
+		editor.customConfig.uploadImgHooks = {
+			    before: function (xhr, editor, files) {
+			    },
+			    success: function (xhr, editor, result) {
+			        // 图片上传并返回结果，图片插入成功之后触发
+			        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
+			    	$text1.val(result.data);
+			    	
+			    	layer.alert("上传成功",{icon:1});
+			    },
+			    fail: function (xhr, editor, result) {
+			        // 图片上传并返回结果，但图片插入错误时触发
+			        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
+			    
+			    	layer.alert("上传失败:"+result,{icon:2});
+			    },
+			    error: function (xhr, editor) {
+			        // 图片上传出错时触发
+			        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象
+			        layer.alert("上传出错",{icon:2});
+			    },
+			    timeout: function (xhr, editor) {
+			        // 图片上传超时时触发
+			        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象
+			        layer.alert("上传超时",{icon:2});
+			    },
+			   
+			    }
+
+        editor.create();
+</script>
+<script type="text/javascript">
+
+	// 当父级全选中，子集也全选中
+	$('.father').click(function(){
+		$(this).parents('.widget-box').find('.widget-body .children').prop("checked",$(this).prop("checked"))
+	})
+	// 当子集勾选的数大于0，父级选中，等于0时父级取消选中
+	$('.children').click(function(){
+		var len=$(this).parents('.widget-main').find('.children:checked').length;
+		if(len>0){
+
+			$(this).parents(".widget-box").find(".widget-header .father").prop("checked",true);
+
+
+		}else{
+
+
+		$(this).parents(".widget-box").find(".widget-header .father").prop("checked",false);
+
+
+
+
+		}
+	})
+
+	
+</script>

@@ -1,0 +1,118 @@
+ {include file="common/header" /}
+<div class="innerbanner">
+                <img src="__IMG__/j10.jpg" alt="">
+                <div class="inner">
+                    <span>咨询大咖</span>
+                </div>
+            </div>
+            <div class="shotxq">
+                <div class="inner">
+                    <div class="tabtit">
+                        <a href="{:url('/')}">首页</a><b>></b><a href="/bigshot">咨询大咖</a><b>></b><span>详情</span>
+                    </div>
+                
+
+                    <div class="box clearfix">
+                        <div class="boxL">
+                            <img src="{$info['pic']}" alt="">
+                        </div>
+                        <div class="boxR">
+                            <h3>{$info['name']}</h3>
+                            <div class="clearfix unit">
+                                <span class="left stit">擅长领域：</span>
+                               
+
+                                      {php}
+
+                                        $arr = explode(",",$info['field']);
+
+                                      
+                                       for($i=0;$i < count($arr);$i++){
+                                            for($j=0;$j< count($field);$j++){
+                                                if($field[$j]['id']==$arr[$i]){
+                                                  
+                                                    echo "<em class='left'>".$field[$j]['field']."</em>";
+                                            }
+
+                                        }
+                                      
+                                          
+                                       }
+
+    
+
+                                    {/php}
+                            </div>
+                            <div class="clearfix unit">
+                                <span class="left stit">从业年限：</span>
+                                <strong class="left">{$info['expire']}年</strong>
+                            </div>
+                            <div class="clearfix unit">
+                                <span class="left stit">个人资质：</span>
+                                <div class="stip">
+
+                                      {php}
+
+                                        $arr = explode(",",$info['zizhi']);
+                                       for($i=0;$i < count($arr);$i++){
+
+                                       echo "<p>$arr[$i]</p>";
+                                          
+                                       }
+
+
+
+                                    {/php}
+                                    
+                                </div>
+                            </div>
+                            <div class="clearfix unit">
+                                <span class="left stit">个人介绍：</span>
+                                <div class="stip">
+                                    <p>{$info['desc']}</p>
+                                </div>
+                            </div>
+                            <div class="clearfix unit">
+                                <span class="left stit">擅长方向：</span>
+                                <div class="stip">
+                                    <p>{$info['goodat']}</p>
+                                </div>
+                            </div>
+                            <div class="clearfix unit">
+                                <span class="left stit">个人成长：</span>
+                                <div class="stip">
+                                    <p>{$info['group']}</p>
+                                </div>
+                            </div>
+                            <div class="clearfix unit">
+                                <span class="left stit">工作流程：</span>
+                                <div class="stip">
+                                   {$info['workflow']}
+                                </div>
+                            </div>
+                            <div class="clearfix unit">
+                                <span class="left stit">工作语言：</span>
+                                <div class="stip">
+                                    <p>{$info['language']}</p>
+                                </div>
+                            </div>
+                            <div class="clearfix unit">
+                                <span class="left stit">咨询频率：</span>
+                                <div class="stip">
+                                    <p>{$info['ctat']}</p>
+                                </div>
+                            </div>
+                            <div class="clearfix unit">
+                                <span class="left stit">咨询费用：</span>
+                                <div class="stip">
+                                    <p>{$info['cost']}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div> 
+{include file="common/footer" /}        

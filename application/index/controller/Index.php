@@ -29,6 +29,9 @@ class Index extends Controller
     	$this->assign('article',$article);
     	// var_dump($article);
     	// die();
+        //关于我们
+         $about = Db::table("about")->where("status",1)->find();
+         $this->assign('about',$about); 
 
         return view();
     }

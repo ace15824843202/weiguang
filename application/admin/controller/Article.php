@@ -156,8 +156,8 @@ class Article extends Base
         }elseif(request()->isPost()){
             $param = input('post.');
 
-            // var_dump($param);
-            // die();
+             // var_dump($param);
+             // die();
 
             $list['title']=$param['title'];
             $list['desc']=$param['desc'];

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 头部开始 -->
+
+{include file="common/header"}
+<!-- 头部结束 -->
+<body class="no-skin">
+	<!-- 导航开始 -->
+	{include file="common/navbar"}
+	<!-- 导航结束 -->
+	<div class="main-container" id="main-container">
+		<!-- 侧边栏开始 -->
+		{include file="common/sidebar"}
+		<!-- 侧边栏结束 -->
+
+
+		<div class="main-content">
+			<div class="main-content-inner">
+				<div class="breadcrumbs" id="breadcrumbs">
+					<ul class="breadcrumb">
+						<li>
+							<i class="ace-icon fa fa-home home-icon"></i>
+							<a href="{:url('index/index')}">首页</a>
+						</li>
+						<li class="active">关于我们管理</li>
+					</ul>
+				</div>
+				<div class="page-content">
+					<div class="alert alert-block alert-success">
+						<button type="button" class="close" data-dismiss="alert">
+							<i class="ace-icon fa fa-times"></i>
+						</button>
+						欢迎使用微光后台管理系统。
+					</div>
+
+					<!-- 模板设置 -->
+					{include file="common/setting"}
+					<!-- 模板设置借书 -->
+					
+
+
+					<!-- <div class="row">
+						<div class="col-xs-12">
+							<form class="form-horizontal" action="{:url('about/add')}" method="post" enctype="multipart/form-data">
+								
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 邮箱：</label>
+									<div class="col-sm-9">
+										<input type="email" required name="email" class="rcol-xs-10 col-sm-5" value="">
+										
+										<span class="help-inline col-xs-12 col-sm-7"></span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 微信：</label>
+									<div class="col-sm-9">
+										<input type="text" required name="wechat" class="rcol-xs-10 col-sm-5" value="">
+										
+										<span class="help-inline col-xs-12 col-sm-7"></span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 知乎：</label>
+									<div class="col-sm-9">
+										<input type="text" required name="zhihu" class="rcol-xs-10 col-sm-5" value="">
+										
+										<span class="help-inline col-xs-12 col-sm-7"></span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> Instagram：</label>
+									<div class="col-sm-9">
+										<input type="text" required name="instagram" class="rcol-xs-10 col-sm-5" value="">
+										
+										<span class="help-inline col-xs-12 col-sm-7"></span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 是否启用 </label>
+									<div class="control-label no-padding-left col-sm-1">
+										<label>
+											<input type="hidden" name="status" value="0">
+											<input class="ace ace-switch ace-switch-2" type="checkbox" checked name ="status" value="1" />
+											<span class="lbl"></span>
+										</label>
+									</div>
+									<span class="help-inline col-xs-12 col-sm-7">
+										<span class="middle">YES，启用；NO，禁用</span>
+									</span>
+								</div>
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1">内容:</label>
+									<div class="col-sm-9">
+										
+										<div id="editor">
+											
+										</div>
+
+										<input id="text1" type="hidden" required name="content">
+										
+										<span class="help-inline col-xs-12 col-sm-7"></span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+
+								<div class="col-md-offset-2 col-md-9">
+									<button class="btn btn-info" type="submit"><i class="icon-ok bigger-110"></i>提交</button>&nbsp; &nbsp; &nbsp;
+									<button class="btn" type="reset"><i class="icon-undo bigger-110"></i>重置</button>
+								</div>
+							</form>
+
+					</div> -->
+					<div class="row">
+						<div class="col-xs-12">
+							<form class="form-horizontal" action="{:url('about/edit')}" method="post">
+
+								<input type="hidden" name="id" value="{$info['id']}">
+								
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 邮箱：</label>
+									<div class="col-sm-9">
+										<input type="email" required name="email" class="rcol-xs-10 col-sm-5" value="{$info['email']}">
+										
+										<span class="help-inline col-xs-12 col-sm-7"></span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 微信：</label>
+									<div class="col-sm-9">
+										<input type="text" required name="wechat" class="rcol-xs-10 col-sm-5" value="{$info['wechat']}">
+										
+										<span class="help-inline col-xs-12 col-sm-7"></span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 知乎:</label>
+									<div class="col-sm-9">
+										<input type="text" required name="zhihu" class="rcol-xs-10 col-sm-5" value="{$info['zhihu']}">
+										
+										<span class="help-inline col-xs-12 col-sm-7"></span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> instagram：</label>
+									<div class="col-sm-9">
+										<input type="text" required name="instagram" class="rcol-xs-10 col-sm-5" value="{$info['instagram']}">
+										
+										<span class="help-inline col-xs-12 col-sm-7"></span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 显示状态 </label>
+									<div class="control-label no-padding-left col-sm-1">	
+										<input type="hidden" name="status" value='0'>
+										<label>
+											<input name="status" value="1" class="ace ace-switch ace-switch-2" type="checkbox" {$info['status']==1?"checked":""} />
+											<span class="lbl"></span>
+										</label>
+									</div>
+									<span class="help-inline col-xs-12 col-sm-7">
+										<span class="middle"></span>
+									</span>
+								</div>
+								<div class="space-4"></div>
+
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1">详情:</label>
+									<div class="col-sm-9">
+										
+										<div id="editor">
+											{$info['content']}
+										</div>
+
+										
+										<input id="text1" type="hidden"  name="content" value='{$info['content']}'  />
+										
+										<span class="help-inline col-xs-12 col-sm-7"></span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="col-md-offset-2 col-md-9">
+									<button class="btn btn-info" type="submit"><i class="icon-ok bigger-110"></i>提交</button>&nbsp; &nbsp; &nbsp;
+									<button class="btn" type="reset"><i class="icon-undo bigger-110"></i>重置</button>
+								</div>
+							</form>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- 底部开始 -->
+		{include file="common/footer"}
+		<!-- 底部结束 -->
+	</div>
+
+	<!-- 相关js -->
+	{include file="common/js"}
+	
+</body>
+</html>
+
+<script type="text/javascript">
+	var E = window.wangEditor
+        var editor = new E('#editor')
+        // 或者 var editor = new E( document.getElementById('editor') )
+      	var $text1 = $('#text1')
+        
+        //开启调试模式  默认是关闭的
+        editor.customConfig.debug = true;
+        
+        // 隐藏“网络图片”tab
+    	editor.customConfig.showLinkImg = false;
+
+    	// 配置服务器端地址
+    	editor.customConfig.uploadImgServer = "{:url('bigshot/upload')}";
+        
+
+        // 将图片大小限制为 3M
+		editor.customConfig.uploadImgMaxSize = 3 * 1024 * 1024;
+       
+       	// 限制一次最多上传 1 张图片
+		editor.customConfig.uploadImgMaxLength = 5;
+
+		//自定义文件名
+		editor.customConfig.uploadFileName = 'myfiles[]';
+		// 将 timeout 时间改为 3s
+		editor.customConfig.uploadImgTimeout = 3000;
+
+		editor.customConfig.onchange = function (html) {
+            // 监控变化，同步更新到 textarea
+            $text1.val(html)
+        }
+
+		editor.customConfig.uploadImgHooks = {
+			    before: function (xhr, editor, files) {
+			    },
+			    success: function (xhr, editor, result) {
+			        // 图片上传并返回结果，图片插入成功之后触发
+			        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
+			    	$text1.val(result.data);
+			    	
+			    	layer.alert("上传成功",{icon:1});
+			    },
+			    fail: function (xhr, editor, result) {
+			        // 图片上传并返回结果，但图片插入错误时触发
+			        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
+			    
+			    	layer.alert("上传失败:"+result,{icon:2});
+			    },
+			    error: function (xhr, editor) {
+			        // 图片上传出错时触发
+			        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象
+			        layer.alert("上传出错",{icon:2});
+			    },
+			    timeout: function (xhr, editor) {
+			        // 图片上传超时时触发
+			        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象
+			        layer.alert("上传超时",{icon:2});
+			    },
+			   
+			    }
+
+        editor.create();
+</script>

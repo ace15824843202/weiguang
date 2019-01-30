@@ -26,6 +26,10 @@ class Article extends Controller
         $this->assign('type_id',$type_id);
         // var_dump($article);
         // die();
+        // 
+        //关于我们
+         $about = Db::table("about")->where("status",1)->find();
+         $this->assign('about',$about); 
 
         return view();
     }
@@ -35,6 +39,10 @@ class Article extends Controller
         $this->assign('nav',$nav);
         $controller = strtolower(request()->controller());
         $this->assign('controller',$controller);
+
+         //关于我们
+         $about = Db::table("about")->where("status",1)->find();
+         $this->assign('about',$about); 
 
         // 心理阅读二级导航
         $mind_nav = Db::table('top_type')->where('pid',1)->limit(6)->order('order')->select();

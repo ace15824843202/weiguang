@@ -128,6 +128,7 @@ class User extends Base
 
             }else{
                 $this->error("修改失败");
+
             }
         }
         

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:71:"C:\wamp64\www\tp5-1\public/../application/index\view\article\index.html";i:1544792044;s:61:"C:\wamp64\www\tp5-1\application\index\view\common\header.html";i:1545405061;s:61:"C:\wamp64\www\tp5-1\application\index\view\common\footer.html";i:1548828434;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:69:"C:\wamp64\www\tp5-1\public/../application/index\view\about\index.html";i:1548827945;s:61:"C:\wamp64\www\tp5-1\application\index\view\common\header.html";i:1545405061;s:61:"C:\wamp64\www\tp5-1\application\index\view\common\footer.html";i:1548828434;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,56 +32,32 @@
                     </ul>
                 </div>
             </div>
+
+            
             <div class="innerbanner">
-                <img src="/static/images/j4.jpg" alt="">
-                <div class="inner">
-                    <span>心理阅读</span>
-                </div>
+                <img src="/static/images/j13.jpg" alt="">
             </div>
-            <div class="innernav">
-                <div class="box">
-                    <ul class="clearfix">
-                    <?php foreach($mind_nav as $k=>$v): ?>
-                        <li><a href="<?php echo url('index',['id'=>$v['id']]); ?>" class="<?php echo $v['id']==$type_id?'activea':''; ?>"><?php echo $v['name']; ?></a></li>
-                    <?php endforeach; ?>
-                        <li class="more">
-                            <a href="#">更多分类</a>
-                            <div class="secnav">
-                                <div class="arrow"></div>
-                                <div>
-                                <?php foreach($more_nav as $k=>$v): ?>
-                                    <a href="<?php echo url('index',['id'=>$v['id']]); ?>" class="<?php echo $v['id']==$type_id?'activea':''; ?>"><?php echo $v['name']; ?></a>
-                                <?php endforeach; ?>
-                                </div>
+            <div class="aboutcont">
+                <div class="inner">
+                    <div class="box">
+                        <div class="section1">
+                            <h2>微光咨询</h2>
+                            <h4>北美专业的心理咨询平台</h4>
+                            <p>“我们不求万丈光芒，只愿一缕微光，温柔陪伴漂泊异乡的你。<br>我们倾听，我们懂得，我们在这里！”</p>
+                        </div>
+                        <div class="section2">
+                           <?php echo $content; ?>
+                        </div>
+                        <div class="section3 clearfix">
+                            <div class="left">
+                                <img src="<?php echo $pic1; ?>" alt="">
+                                <img src="<?php echo $pic2; ?>" alt="">
                             </div>
-                        </li>                              
-                    </ul>
-                </div>
-            </div>
-            <div class="wzlist">
-                <div class="inner">
-                    <ul>
-                    <?php foreach($article as $k=>$v): ?>
-                        <li class="clearfix">
-                            <img src="<?php echo $v['pic']; ?>" alt="">
-                            <div class="words">
-                                <p class="time"><?php echo substr($v['addtime'] ,0,10); ?></p>
-                                <h2 class="tit"><?php echo $v['title']; ?></h2>
-                                <p class="word"><?php echo $v['desc']; ?></p>
-                                <a href="<?php echo url('detail',['article_id'=>$v['id'],'id'=>$v['type_id']]); ?>" class="xq">了解详情</a>
-                            </div>
-                        </li>
-                    <?php endforeach; ?>
-                    </ul>
-                </div>
-            </div>
-            <div class="page">
-                <div class="inner">
-                    <div class="box clearfix">
-                    <div>
-                        <?php echo $article->render(); ?>
-                    </div>
-                        
+                            <div class="right">
+                                <img src="<?php echo $pic3; ?>" alt="">
+                                <img class="smallPic" src="<?php echo $pic4; ?>" alt="">
+                            </div> 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -169,3 +145,5 @@
     </script>
 </body>
 </html>
+
+
