@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:71:"C:\wamp64\www\tp5-1\public/../application/admin\view\article\index.html";i:1544857980;s:61:"C:\wamp64\www\tp5-1\application\admin\view\common\header.html";i:1544513856;s:61:"C:\wamp64\www\tp5-1\application\admin\view\common\navbar.html";i:1544857650;s:62:"C:\wamp64\www\tp5-1\application\admin\view\common\sidebar.html";i:1544757192;s:62:"C:\wamp64\www\tp5-1\application\admin\view\common\setting.html";i:1544514316;s:61:"C:\wamp64\www\tp5-1\application\admin\view\common\footer.html";i:1544514356;s:57:"C:\wamp64\www\tp5-1\application\admin\view\common\js.html";i:1544528948;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:71:"C:\wamp64\www\tp5-1\public/../application/admin\view\article\index.html";i:1549347585;s:61:"C:\wamp64\www\tp5-1\application\admin\view\common\header.html";i:1544513856;s:61:"C:\wamp64\www\tp5-1\application\admin\view\common\navbar.html";i:1548826243;s:62:"C:\wamp64\www\tp5-1\application\admin\view\common\sidebar.html";i:1544757192;s:62:"C:\wamp64\www\tp5-1\application\admin\view\common\setting.html";i:1544514316;s:61:"C:\wamp64\www\tp5-1\application\admin\view\common\footer.html";i:1544514356;s:57:"C:\wamp64\www\tp5-1\application\admin\view\common\js.html";i:1544528948;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <!-- 头部开始 -->
@@ -39,7 +39,7 @@
 			<div class="navbar-buttons navbar-header pull-right" role="navigation">
 				<ul class="nav ace-nav">
 					<li class="red">
-						<a href="#" title="前台首页" target="_blank">
+						<a href="/" title="前台首页" target="_blank">
 							<i class="ace-icon fa fa-home"></i>
 						</a>
 					</li>
@@ -204,7 +204,7 @@
 						<div class="col-xs-12">
 							<div class="row">
 								<div class="cf">
-									<form class="form-inline" action="" method="get">
+									<form class="form-inline" action="<?php echo url('article/index'); ?>"" method="get">
 									<a class="btn btn-info" href="<?php echo url('article/add'); ?>">新增</a>
 									<select name="type_id" class="form-control" style="width: 10%">
 									<?php foreach($type as $k=>$v): if($type_id==$v['id']): ?>

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:72:"C:\wamp64\www\tp5-1\public/../application/index\view\article\detail.html";i:1544794664;s:61:"C:\wamp64\www\tp5-1\application\index\view\common\header.html";i:1545405061;s:61:"C:\wamp64\www\tp5-1\application\index\view\common\footer.html";i:1544770886;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:72:"C:\wamp64\www\tp5-1\public/../application/index\view\article\detail.html";i:1544794664;s:61:"C:\wamp64\www\tp5-1\application\index\view\common\header.html";i:1545405061;s:61:"C:\wamp64\www\tp5-1\application\index\view\common\footer.html";i:1548828434;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -102,7 +102,7 @@
                     </div>
                 </div>
             </div>
-           <!-- footer -->
+<!-- footer -->
              <div class="footer">
                 <div class="foot">
                     <div class="paddingbox">
@@ -111,17 +111,17 @@
                                 <h3>联系我们</h3>
                                 <div class="email clearfix">
                                     <span>邮箱地址</span>
-                                    <strong>skylightconsulting@hotmail.com</strong>
+                                    <strong><?php echo $about['email']; ?></strong>
                                 </div>
                                 <div class="zx clearfix">
                                    <span>微光咨询小<br>秘书微信ID</span>
-                                   <strong>skylighthelper</strong>
+                                   <strong><?php echo $about['wechat']; ?></strong>
                                 </div>
                                 <div class="zh clearfix">
                                     <span>知乎专栏</span>
                                     <strong>
-                                        <a href="https://zhuanlan.zhihu.com/skylightconsulting" target="_blank">https://zhuanlan.zhihu.com/skylightconsulting</a>
-                                        <b>Instagram: skylightconsulting</b>
+                                        <a href="<?php echo $about['zhihu']; ?>" target="_blank"><?php echo $about['zhihu']; ?></a>
+                                        <b>Instagram: <?php echo $about['instagram']; ?></b>
                                     </strong>
                                 </div>
                             </div>

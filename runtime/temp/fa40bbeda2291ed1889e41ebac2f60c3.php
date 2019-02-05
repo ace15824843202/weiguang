@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:70:"C:\wamp64\www\tp5-1\public/../application/admin\view\article\edit.html";i:1549346062;s:61:"C:\wamp64\www\tp5-1\application\admin\view\common\header.html";i:1544513856;s:61:"C:\wamp64\www\tp5-1\application\admin\view\common\navbar.html";i:1548826243;s:62:"C:\wamp64\www\tp5-1\application\admin\view\common\sidebar.html";i:1544757192;s:62:"C:\wamp64\www\tp5-1\application\admin\view\common\setting.html";i:1544514316;s:61:"C:\wamp64\www\tp5-1\application\admin\view\common\footer.html";i:1544514356;s:57:"C:\wamp64\www\tp5-1\application\admin\view\common\js.html";i:1544528948;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:69:"C:\wamp64\www\tp5-1\public/../application/admin\view\toptype\add.html";i:1544858124;s:61:"C:\wamp64\www\tp5-1\application\admin\view\common\header.html";i:1544513856;s:61:"C:\wamp64\www\tp5-1\application\admin\view\common\navbar.html";i:1548826243;s:62:"C:\wamp64\www\tp5-1\application\admin\view\common\sidebar.html";i:1544757192;s:62:"C:\wamp64\www\tp5-1\application\admin\view\common\setting.html";i:1544514316;s:61:"C:\wamp64\www\tp5-1\application\admin\view\common\footer.html";i:1544514356;s:57:"C:\wamp64\www\tp5-1\application\admin\view\common\js.html";i:1544528948;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <!-- 头部开始 -->
@@ -129,7 +129,7 @@
 							<i class="ace-icon fa fa-home home-icon"></i>
 							<a href="<?php echo url('index/index'); ?>">首页</a>
 						</li>
-						<li class="active">轮播图管理</li>
+						<li class="active">导航管理</li>
 					</ul>
 				</div>
 				<div class="page-content">
@@ -202,61 +202,33 @@
 
 					<div class="row">
 						<div class="col-xs-12">
-							<form class="form-horizontal" action="<?php echo url('article/edit'); ?>" method="post">
+							<form class="form-horizontal" action="<?php echo url('toptype/add'); ?>" method="post">
+							<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 上一级类别 </label>
+									<div class="col-sm-9">
+										<select name="pid" value='' class="rcol-xs-10 col-sm-5">
+											<option value="0">顶级导航</option>
+											<?php foreach($list as $k=>$v): ?>
+												<option value="<?php echo $v['id']; ?>"><?php echo $v['name']; ?></option>
 
-								<input type="hidden" name="id" value="<?php echo $data['article_id']; ?>"/>
-								<div class="form-group">
-									<label class="col-sm-1 control-label no-padding-right" for="form-field-1">请选择类型 </label>
-									<div class="col-sm-9">
-										<select class="rcol-xs-10 col-sm-5" name='type_id'>
-											<?php foreach($type as $k=>$v): if($data['type_id']==$v['id']): ?>
-													<option value="<?php echo $v['id']; ?>" selected=""><?php echo $v['name']; ?></option>
-												<?php else: ?>
-													<option value="<?php echo $v['id']; ?>"><?php echo $v['name']; ?></option>
-												<?php endif; endforeach; ?>
+											<?php endforeach; ?>
 										</select>
+										<span class="help-inline col-xs-12 col-sm-7">请慎重选择上一级导航</span>
+									</div>
+								</div>
+								<div class="space-4"></div>
+								<div class="form-group">
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 导航名 </label>
+									<div class="col-sm-9">
+										<input type="text" name="name" class="rcol-xs-10 col-sm-5" value="">
 										<span class="help-inline col-xs-12 col-sm-7"></span>
 									</div>
 								</div>
 								<div class="space-4"></div>
 								<div class="form-group">
-									<label class="col-sm-1 control-label no-padding-right" for="form-field-1">文章标题 </label>
+									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 排序</label>
 									<div class="col-sm-9">
-										<input type="text" name="title" class="rcol-xs-10 col-sm-5" value="<?php echo $data['title']; ?>">
-										<span class="help-inline col-xs-12 col-sm-7"></span>
-									</div>
-								</div>
-								<div class="space-4"></div>
-								<div class="form-group">
-									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 作者 </label>
-									<div class="col-sm-9">
-										<input type="text" name="author" class="rcol-xs-10 col-sm-5" value="<?php echo $data['author']; ?>">
-										<span class="help-inline col-xs-12 col-sm-7"></span>
-									</div>
-								</div>
-								<div class="space-4"></div>
-								<div class="form-group">
-									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 责任编辑 </label>
-									<div class="col-sm-9">
-										<input type="text" name="editor" class="rcol-xs-10 col-sm-5" value="<?php echo $data['editor']; ?>">
-										<span class="help-inline col-xs-12 col-sm-7"></span>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 文章描述 </label>
-									<div class="col-sm-9">
-										<textarea class="rcol-xs-10 col-sm-5" rows="5" name='desc'><?php echo $data['desc']; ?></textarea>
-										<span class="help-inline col-xs-12 col-sm-7"></span>
-									</div>
-								</div>
-								<div class="space-4"></div>
-								<div class="form-group">
-									<label class="col-sm-1 control-label no-padding-right" for="form-field-1"> 内容</label>
-									<div class="col-sm-9">
-										<div id="editor" >
-											<?php echo $data['content']; ?>
-										</div>
-										<input id="text1" type="hidden" name="content" value='<?php echo $data['content']; ?>'>
+										<input type="text" name="order" class="rcol-xs-10 col-sm-5" value="">
 										<span class="help-inline col-xs-12 col-sm-7"></span>
 									</div>
 								</div>
@@ -312,66 +284,3 @@
 	
 </body>
 </html>
-<script type="text/javascript">
-	var E = window.wangEditor
-        var editor = new E('#editor')
-        // 或者 var editor = new E( document.getElementById('editor') )
-      	var $text1 = $('#text1')
-        
-        //开启调试模式  默认是关闭的
-        editor.customConfig.debug = true;
-        
-        // 隐藏“网络图片”tab
-    	editor.customConfig.showLinkImg = false;
-
-    	// 配置服务器端地址
-    	editor.customConfig.uploadImgServer = "<?php echo url('banner/upload'); ?>";
-        
-
-        // 将图片大小限制为 3M
-		editor.customConfig.uploadImgMaxSize = 3 * 1024 * 1024;
-       
-       	// 限制一次最多上传 1 张图片
-		editor.customConfig.uploadImgMaxLength = 1;
-
-		//自定义文件名
-		editor.customConfig.uploadFileName = 'myfiles[]';
-		// 将 timeout 时间改为 3s
-		editor.customConfig.uploadImgTimeout = 3000;
-
-		editor.customConfig.onchange = function (html) {
-            // 监控变化，同步更新到 textarea
-            $text1.val(html)
-        }
-
-		editor.customConfig.uploadImgHooks = {
-			    before: function (xhr, editor, files) {
-			    },
-			    success: function (xhr, editor, result) {
-			        // 图片上传并返回结果，图片插入成功之后触发
-			        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
-			    	// $text1.val(result.data);
-			    	
-			    	layer.alert("上传成功",{icon:1});
-			    },
-			    fail: function (xhr, editor, result) {
-			        // 图片上传并返回结果，但图片插入错误时触发
-			        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
-			    
-			    	layer.alert("上传失败:"+result,{icon:2});
-			    },
-			    error: function (xhr, editor) {
-			        // 图片上传出错时触发
-			        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象
-			        layer.alert("上传出错",{icon:2});
-			    },
-			    timeout: function (xhr, editor) {
-			        // 图片上传超时时触发
-			        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象
-			        layer.alert("上传超时",{icon:2});
-			    },
-			   
-			    }
-
-        editor.create();
-</script>
